@@ -39,7 +39,7 @@ const Add = () => {
         formData.append("evjarat", car.evjarat);
         formData.append("image", file);
         await axios.post("http://localhost:8800/cars", formData);
-        navigate("/");
+        //navigate("/");
       }
     } catch (error) {
       console.log(error);

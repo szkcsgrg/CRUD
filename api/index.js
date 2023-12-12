@@ -69,15 +69,18 @@ app.get("/cars/:id", (req, res) => {
 //Insert into the database.
 ////////////////////////////////////////////////////////////////
 
-app.post("/cars", upload.single('image'), (req, res)  => {
+app.post("/cars", 
+upload.single('image'),
+ (req, res)  => {
   console.log(req.body)
+  console.log(req.file)
   const q = `INSERT INTO cars.cars (name, model, evjarat, image) VALUES (?)`;
   const values = [req.body.name, req.body.model, req.body.evjarat, req.file.path];
-
-  db.query(q, [values], (err, result) => {
-    if (err) return res.json(err);
-    return res.json("Car has been created successfully.");
-  });
+  console.log(values);
+  // db.query(q, [values], (err, result) => {
+  //   if (err) return res.json(err);
+  //   return res.json("Car has been created successfully.");
+  // });
 });
 
 ////////////////////////////////////////////////////////////////
